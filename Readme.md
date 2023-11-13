@@ -1,5 +1,6 @@
 # Solar Dayahead Forecast Data
 **21th** place solution for NTNU course TDT4173 ML fall 2023 Kaggle competition on solar energy production forecasting (https://www.kaggle.com/competitions/solar-energy-production-forecasting).
+10 out of 10 virtual teams defeated
 
 ## Description
 This dataset provides data for evaluating solar production dayahead forecasting methods.
