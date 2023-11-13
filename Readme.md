@@ -1,5 +1,7 @@
 # Solar Dayahead Forecast Data
+**21th** place solution for NTNU course TDT4173 ML fall 2023 Kaggle competition on solar energy production forecasting (https://www.kaggle.com/competitions/solar-energy-production-forecasting).
 
+## Description
 This dataset provides data for evaluating solar production dayahead forecasting methods.
 The dataset contains three locations (A, B, C), corresponding to office buildings with solar panels installed.
 There is one folder for each location.
@@ -33,3 +35,5 @@ While file `X_train_observed.parquet` contains one time-related column `date_for
 both `X_train_estimated.parquet` and  `X_test_estimated.parquet` additionally contain `date_calc` to indicate when the forecast was produced.
 This type of test data makes evaluation closer to how the forecasting methods that are used in production.
 Evaluation measure is [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error).
+
+
