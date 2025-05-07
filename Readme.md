@@ -3,7 +3,7 @@
 
 10 out of 10 virtual teams defeated
 
-## Description
+## Definition
 This dataset provides data for evaluating solar production dayahead forecasting methods.
 The dataset contains three locations (A, B, C), corresponding to office buildings with solar panels installed.
 There is one folder for each location.
@@ -37,5 +37,43 @@ While file `X_train_observed.parquet` contains one time-related column `date_for
 both `X_train_estimated.parquet` and  `X_test_estimated.parquet` additionally contain `date_calc` to indicate when the forecast was produced.
 This type of test data makes evaluation closer to how the forecasting methods that are used in production.
 Evaluation measure is [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error).
+
+## Our Resolution
+The final solution was achieved after several months of **data analysis, preprocessing, model experimentation, optimization, and ensemble learning**, all implemented in **Python**.
+
+---
+
+### 🔧 Data Preprocessing
+
+A substantial part of the project involved cleaning and transforming the data. Key preprocessing steps included:
+
+- **Reading and exploring data** using `pandas`
+- **Date handling**: converting timestamps into datetime objects and extracting features like year, month, and day
+- **Merging multiple datasets** into a single table with **one-hot encoding** to indicate the source dataset
+- **Temporal aggregation**: the original data recorded every 15 minutes was **aggregated to hourly records** using the **median** (which empirically performed better than the mean)
+- **Handling missing values** by replacing `NaN`s with 0
+- **Dropping non-informative features** to improve model clarity and performance
+
+---
+
+### 🧠 Base Models Used
+
+We trained and stacked several powerful regression models, including:
+
+- **LightGBM (lgbm)**: a fast, efficient gradient boosting framework developed by Microsoft
+- **LGBMRegressor (lgbm_reg)**: a LightGBM variant optimized for continuous regression tasks
+- **CatBoost**: a boosting algorithm by Yandex, designed to handle categorical variables natively
+- **XGBoost**: a highly popular and competitive gradient boosting method
+- **Random Forest**: a classic ensemble method based on bagging with decision trees
+
+---
+
+### 🔗 Final Model: **Stacking Ensemble with Linear Regression**
+
+We implemented a **stacking ensemble approach**, where the outputs of all base models were used as input features for a **Linear Regression** meta-model. This model learns to **optimally combine** the individual predictions to minimize the final error:
+
+y^=w1⋅y^1+w2⋅y^2+w3⋅y^3+⋯+b
+
+This linear combination helps capture the strengths of each base model, improving overall performance and generalization.
 
 
